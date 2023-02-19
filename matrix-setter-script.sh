@@ -21,12 +21,18 @@ pip3 install mediafire-dl
 gsettings set org.gnome.desktop.interface gtk-theme "Yaru-Viridian-Dark"
 
 # download and set cursor theme
+sudo apt install git -y
+git clone https://github.com/Juvenal-Yescas/mediafire-dl.git
+sudo apt install python -y
+pip install tqdm
+pip3 install git+https://github.com/Juvenal-Yescas/mediafire-dl
 mediafire-dl https://www.mediafire.com/file/8mfwhasojxr261u/Oxygen_14_Matrix_Green.tar/file
 tar xvzf "Oxygen 14 Matrix Green.tar"
 sudo cp -R "Oxygen 14 Matrix Green" ~/.icons
 gsettings set org.gnome.desktop.interface cursor-theme 'Oxygen 14 Matrix Green'
 
 # copy MATRIX video and set as wallpaper
+mediafire-dl https://www.mediafire.com/file/vlq98ajxi9blfss/MATRIX.wmv/file
 cp -R MATRIX.wmv ~/.videos
 cd gpu-video-wallpaper
 ./install.sh
