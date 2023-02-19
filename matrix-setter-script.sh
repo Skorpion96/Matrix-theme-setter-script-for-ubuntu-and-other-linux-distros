@@ -21,8 +21,6 @@ pip3 install mediafire-dl
 gsettings set org.gnome.desktop.interface gtk-theme "Yaru-Viridian-Dark"
 
 # download and set cursor theme
-sudo apt install git -y
-git clone https://github.com/Juvenal-Yescas/mediafire-dl.git
 sudo apt install python -y
 pip install tqdm
 pip3 install git+https://github.com/Juvenal-Yescas/mediafire-dl
