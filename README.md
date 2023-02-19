@@ -13,4 +13,4 @@ Note that i own nothing of these theme files, only the script is mine.
 
 To Install: sudo bash matrix-setter-script.sh
 
-note downloads have issues on the sh script for now, we are fixing it
+note downloads have issues on the sh script for now, we are fixing them
