@@ -16,7 +16,7 @@ cd gpu-video-wallpaper
 sudo ./install.sh
 cd ..
 cp -R MATRIX.wmv ~/.videos
-sh video-wallpaper.sh --startup ~/.videos/MATRIX.wmv
+sudo sh video-wallpaper.sh --startup ~/.videos/MATRIX.wmv
 sudo echo 'export PS1="\e[0;32[\u@\h \W]\$ \e[m "' >> ~/.bashrc
 sudo gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:"$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')"/ background-color '#000000'
 
