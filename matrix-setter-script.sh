@@ -14,9 +14,6 @@ sudo chmod -R 777 ~/.documents
 # install necessary packages
 sudo apt install -y gnome-tweaks curl python3-pip git cmatrix xorg-dev libx11-dev libxext-dev
 
-# install mediafire-dl
-pip3 install mediafire-dl
-
 # download and set GTK theme
 gsettings set org.gnome.desktop.interface gtk-theme "Yaru-Viridian-Dark"
 
