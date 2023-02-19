@@ -32,12 +32,13 @@ sudo cp -R "Oxygen 14 Matrix Green" ~/.icons
 gsettings set org.gnome.desktop.interface cursor-theme 'Oxygen 14 Matrix Green'
 
 # copy MATRIX video and set as wallpaper
+git clone https://github.com/ghostlexly/gpu-video-wallpaper.git
 mediafire-dl https://www.mediafire.com/file/vlq98ajxi9blfss/MATRIX.wmv/file
 cp -R MATRIX.wmv ~/.videos
 cd gpu-video-wallpaper
 ./install.sh
-cd ..
 sh video-wallpaper.sh --startup ~/.videos/MATRIX.wmv
+cd ..
 
 # set terminal background color and prompt
 profile=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}')
