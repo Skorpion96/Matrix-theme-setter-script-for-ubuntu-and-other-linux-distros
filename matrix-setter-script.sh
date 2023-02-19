@@ -1,7 +1,8 @@
 #!/bin/sh
 mkdir ~/.icons
 mkdir ~/.themes
-mkdir ~/.videos
+mkdir ~/.videos 
+mkdir ~/.documents
 sudo apt install gnome-tweaks -y
 sudo gsettings set org.gnome.desktop.interface gtk-theme "Yaru-Viridian-Dark"
 curl "https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1509460911/Oxygen%2014%20Matrix%20Green.tar.gz?response-content-disposition=attachment%3B%2520Oxygen%2014%20Matrix%20Green.tar.gz&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230219T110335Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Signature=9f182dc076c50a42acc0d0e9230c8e13db59fa041468f614cb892a86f8105cfd" --output "Oxygen 14 Matrix Green.tar"
