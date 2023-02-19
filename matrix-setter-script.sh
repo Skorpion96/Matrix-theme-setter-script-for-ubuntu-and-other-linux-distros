@@ -14,6 +14,7 @@ sudo apt install git -y
 git clone "https://github.com/ghostlexly/gpu-video-wallpaper.git"
 cd gpu-video-wallpaper
 sudo ./install.sh
+cd ..
 cp -R MATRIX.wmv ~/.videos
 sh video-wallpaper.sh --startup ~/.videos/MATRIX.wmv
 sudo echo 'export PS1="\e[0;32[\u@\h \W]\$ \e[m "' >> ~/.bashrc
