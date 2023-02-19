@@ -1,7 +1,8 @@
 #!/bin/sh
 mkdir ~/.icons
 mkdir ~/.themes
-mkdir ~/.videos
+mkdir ~/.videos 
+mkdir ~/.documents
 sudo apt install gnome-tweaks -y
 sudo apt install curl -y
 sudo gsettings set org.gnome.desktop.interface gtk-theme "Yaru-Viridian-Dark"
