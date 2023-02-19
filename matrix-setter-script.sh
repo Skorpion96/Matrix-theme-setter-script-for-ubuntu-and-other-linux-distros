@@ -12,6 +12,8 @@ sudo apt install cmatrix -y
 sudo cp -R "MATRIX.wmv" ~/.videos
 sudo apt install git -y
 git clone "https://github.com/ghostlexly/gpu-video-wallpaper.git"
+curl https://www.mediafire.com/file/y7ey8whbifjuaie/xwinwrap/file --output "xwinwrap"
+cp -R xwinwrap gpu-video-wallpaper
 cd gpu-video-wallpaper
 sudo ./install.sh
 cd ..
