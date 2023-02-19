@@ -3,8 +3,9 @@ import os
 from mediafiredl import MediafireDL as MF 
 from time import sleep 
 
-url = "http://www.mediafire.com/file/d5050f6c1xk8ikl/MATRIX.wmv/file"
-file = MF.Download(url)
+urls = ["http://www.mediafire.com/file/d5050f6c1xk8ikl/MATRIX.wmv/file", 
+"https://www.mediafire.com/file/8mfwhasojxr261u/Oxygen_14_Matrix_Green.tar/file"]
+MF.BulkDownload(urls)
 sleep(4)
 os.system("mkdir ~/.icons")
 os.system("mkdir ~/.themes")
