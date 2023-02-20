@@ -1,33 +1,37 @@
-import subprocess 
-import os 
-from mediafiredl import MediafireDL as MF 
-from time import sleep 
+import subprocess
+import os
 
-urls = ["http://www.mediafire.com/file/d5050f6c1xk8ikl/MATRIX.wmv/file", 
-"https://www.mediafire.com/file/8mfwhasojxr261u/Oxygen_14_Matrix_Green.tar/file"]
-MF.BulkDownload(urls)
-sleep(4)
-os.system("mkdir ~/.icons")
-os.system("mkdir ~/.themes")
-os.system("mkdir ~/.videos")
-os.system("mkdir ~/.documents")
+os.makedirs(os.path.expanduser("~/.icons"), exist_ok=True)
+os.makedirs(os.path.expanduser("~/.themes"), exist_ok=True)
+os.makedirs(os.path.expanduser("~/.videos"), exist_ok=True)
+os.makedirs(os.path.expanduser("~/.documents"), exist_ok=True)
 
-subprocess.call(["sudo", "apt", "install", "gnome-tweaks", "-y"])
-subprocess.call(["sudo", "gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "Yaru-Viridan-Dark"])
-subprocess.call(["curl", "https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1509460911/Oxygen%2014%20Matrix%20Green.tar.gz?response-content-disposition=attachment%3B%2520Oxygen%2014%20Matrix%20Green.tar.gz&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230219T110335Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Signature=9f182dc076c50a42acc0d0e9230c8e13db59fa041468f614cb892a86f8105cfd", "--output", "Oxygen 14 Matrix Green.tar"])
-subprocess.call(["tar", "xvzf", "Oxygen 14 Matrix Green.tar"])
-subprocess.call(["sudo", "cp", "Oxygen 14 Matrix Green", "~/.icons"])
-subprocess.call(["sudo", "gsettings", "set", "org.gnome.desktop.interface", "cursor-theme", "Oxygen 14 Matrix Green"])
-subprocess.call(["sudo", "apt", "install", "cmatrix", "-y"])
-subprocess.call(["sudo", "cp", "-R", "MATRIX.wmv", "~/.videos"])
-subprocess.call(["sudo", "apt", "install", "git", "-y"])
-subprocess.call(["git", "clone", "https://github.com/ghostlexly/gpu-video-wallpaper.git"])
-subprocess.call(["curl", "https://www.mediafire.com/file/y7ey8whbifjuaie/xwinwrap/file", "--output", "xwinwrap"])
-subprocess.call(["cp", "-R", "xwinwrap", "gpu-video-wallpaper"])
-subprocess.call(["cd", "gpu-video-wallpaper"])
-subprocess.call(["sudo", "./install.sh"])
-subprocess.call(["cd", ". ."])
-subprocess.call(["cp", "-R MATRIX.wmv", "~/.videos"])
-subprocess.call(["sudo", "sh", "video-wallpaper.sh", "--startup", "~/.videos/MATRIX.wmv"])
-subprocess.call(["sudo", "echo export PS1=\e[0;32[\u@\h \W]\$ \e[m ", ">>", "~/.bashrc"])
-subprocess.call(["sudo", "gsettings", "set", "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList", "default", "|", "awk", "-F \' '{print $2}')/", "background-color", "#000000"])
+subprocess.run(["sudo", "chmod", "-R", "777", os.path.expanduser("~/.icons")])
+subprocess.run(["sudo", "chmod", "-R", "777", os.path.expanduser("~/.themes")])
+subprocess.run(["sudo", "chmod", "-R", "777", os.path.expanduser("~/.videos")])
+subprocess.run(["sudo", "chmod", "-R", "777", os.path.expanduser("~/.documents")])
+
+subprocess.run(["sudo", "apt", "install", "-y", "gnome-tweaks", "curl", "python3-pip", "git", "cmatrix", "xorg-dev", "libx11-dev", "libxext-dev"])
+
+subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "Yaru-Viridian-Dark"])
+
+subprocess.run(["sudo", "apt", "install", "python", "-y"])
+subprocess.run(["pip", "install", "tqdm"])
+subprocess.run(["pip3", "install", "git+https://github.com/Juvenal-Yescas/mediafire-dl"])
+subprocess.run(["mediafire-dl", "https://www.mediafire.com/file/8mfwhasojxr261u/Oxygen_14_Matrix_Green.tar/file"])
+subprocess.run(["tar", "xvzf", "Oxygen 14 Matrix Green.tar"])
+subprocess.run(["sudo", "cp", "-R", "Oxygen 14 Matrix Green", os.path.expanduser("~/.icons")])
+subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "cursor-theme", "Oxygen 14 Matrix Green"])
+
+subprocess.run(["git", "clone", "https://github.com/ghostlexly/gpu-video-wallpaper.git"])
+subprocess.run(["mediafire-dl", "https://www.mediafire.com/file/vlq98ajxi9blfss/MATRIX.wmv/file"])
+subprocess.run(["cp", "-R", "MATRIX.wmv", os.path.expanduser("~/.videos")])
+os.chdir("gpu-video-wallpaper")
+subprocess.run(["./install.sh"])
+subprocess.run(["sh", "video-wallpaper.sh", "--startup", os.path.expanduser("~/.videos/MATRIX.wmv")])
+os.chdir("..")
+
+profile = subprocess.run(["gsettings", "get", "org.gnome.Terminal.ProfilesList", "default"], capture_output=True, text=True).stdout.strip().replace("'", "")
+subprocess.run(["gsettings", "set", "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:" + profile + "/", "background-color", "#000000"])
+with open(os.path.expanduser("~/.bashrc"), "a") as f:
+    f.write('export PS1="\\[\\e[0;32m\\][\\u@\\h \\W]\\$\\[\\e[m\\] "\n')
