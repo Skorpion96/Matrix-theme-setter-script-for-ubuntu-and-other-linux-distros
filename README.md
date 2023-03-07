@@ -12,5 +12,3 @@ Video Wallpaper download link:http://www.mediafire.com/file/d5050f6c1xk8ikl/MATR
 Note that i own nothing of these theme files, only the script is mine.
 
 To Install: sudo bash matrix-setter-script.sh
-
-note there are issues on the sh script for now, we are fixing them
